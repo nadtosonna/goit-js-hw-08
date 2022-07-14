@@ -15,11 +15,9 @@ refs.textarea.addEventListener('input', throttle(onInput, 500));
 
 if (savedData) {
     const formData = JSON.parse(savedData);
-    console.log(formData);
     refs.email.value = formData.email;
     refs.textarea.value = formData.message;
 }
-
 function onFormSubmit(event) {
     event.preventDefault();
     console.log(formData);
@@ -27,6 +25,7 @@ function onFormSubmit(event) {
     localStorage.removeItem(FORM_STORAGE_KEY);
 }
 function onInput(event) {
-    formData[event.target.name] = event.target.value;
+    formData.email = refs.form.elements.email.value;
+    formData.message = refs.form.elements.message.value;
     localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
 }
