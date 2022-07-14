@@ -18,14 +18,15 @@ if (savedData) {
     refs.email.value = formData.email;
     refs.textarea.value = formData.message;
 }
+function onInput(event) {
+    formData.email = refs.form.elements.email.value;
+    formData.message = refs.form.elements.message.value;
+    localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
+}
 function onFormSubmit(event) {
     event.preventDefault();
     console.log(formData);
     refs.form.reset();
     localStorage.removeItem(FORM_STORAGE_KEY);
 }
-function onInput(event) {
-    formData.email = refs.form.elements.email.value;
-    formData.message = refs.form.elements.message.value;
-    localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
-}
+
