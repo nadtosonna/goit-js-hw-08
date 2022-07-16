@@ -26,8 +26,12 @@ function onInput(event) {
 }
 function onFormSubmit(event) {
     event.preventDefault();
+    if (input.email.value === '' || input.message.value === '') {
+        alert('EMAIL and MESSAGE field can not be empty! Please fill in BOTH fields.');
+    } else {
     console.log(formData);
     refs.form.reset();
     localStorage.removeItem(FORM_STORAGE_KEY);
+    }
 }
 
