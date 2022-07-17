@@ -14,11 +14,12 @@ refs.form.addEventListener('submit', onFormSubmit);
 refs.email.addEventListener('input', throttle(onInput, 500));
 refs.textarea.addEventListener('input', throttle(onInput, 500));
 
-if (savedData) {
+if (savedData != null) {
     const formData = JSON.parse(savedData);
     refs.email.value = formData.email;
     refs.textarea.value = formData.message;
 }
+
 function onInput(event) {
     formData.email = input.email.value;
     formData.message = input.message.value;
@@ -26,6 +27,8 @@ function onInput(event) {
 }
 function onFormSubmit(event) {
     event.preventDefault();
+    formData.email = input.email.value;
+    formData.message = input.message.value;
     if (input.email.value === '' || input.message.value === '') {
         alert('EMAIL and MESSAGE field can not be empty! Please fill in BOTH fields.');
     } else {
