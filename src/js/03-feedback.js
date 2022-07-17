@@ -14,7 +14,7 @@ refs.form.addEventListener('submit', onFormSubmit);
 refs.email.addEventListener('input', throttle(onInput, 500));
 refs.textarea.addEventListener('input', throttle(onInput, 500));
 
-if (savedData != null) {
+if (savedData) {
     const formData = JSON.parse(savedData);
     refs.email.value = formData.email;
     refs.textarea.value = formData.message;
